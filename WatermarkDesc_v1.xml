@@ -1,0 +1,814 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_odds.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_odds.rng" type="application/xml"
+	schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+   <teiHeader>
+       <fileDesc>
+           <titleStmt>
+               <title>flexible module for paper and watermark description in TEI-P5.</title>
+               <author>Ermenegilda Müller</author>
+          </titleStmt>
+           <publicationStmt><p>Freely available.</p>
+           </publicationStmt>
+           <sourceDesc>
+               <p>Born digital.</p>
+           </sourceDesc>
+       </fileDesc>
+   </teiHeader> 
+    <text>
+        <front>
+            <divGen type="toc"/>
+        </front>
+        <body>
+            <schemaSpec xmlns:rng="http://relaxng.org/ns/structure/1.0" ident="WatermarkDesc" start="TEI" docLang="en" xml:lang="en">
+                <moduleRef key="header"/>
+                <moduleRef key="core"/>
+                <moduleRef key="tei"/>
+                <moduleRef key="textstructure"/>
+                <moduleRef key="msdescription"/>
+                <moduleRef key="linking"/>
+                <moduleRef key="namesdates"/>
+               <elementSpec ident="support" module="msdescription" mode="change">
+                   <content>
+                       <rng:interleave>
+                       <rng:optional>
+                       <rng:ref name="paperDesc"/>
+                       </rng:optional>
+                           <rng:optional>
+                               <rng:ref name="catchwords"/>
+                           </rng:optional>
+                           <rng:optional>
+                               <rng:ref name="depth"/>
+                           </rng:optional>
+                           <rng:optional>
+                               <rng:ref name="dim"/>
+                           </rng:optional>
+                           <rng:optional>
+                               <rng:ref name="dimensions"/>
+                           </rng:optional>
+                           <rng:optional>
+                               <rng:ref name="height"/>
+                           </rng:optional>
+                           <rng:optional>
+                               <rng:ref name="heraldry"/>
+                           </rng:optional>
+                           <rng:optional>
+                               <rng:ref name="locus"/>
+                           </rng:optional>
+                           <rng:optional>
+                               <rng:ref name="locusGrp"/>
+                           </rng:optional>
+                           <rng:optional>
+                               <rng:ref name="material"/>
+                           </rng:optional>
+                           <rng:optional>
+                               <rng:ref name="msDesc"/>
+                           </rng:optional>
+                           <rng:optional>
+                               <rng:ref name="objectType"/>
+                           </rng:optional>
+                           <rng:optional>
+                               <rng:ref name="origDate"/>
+                           </rng:optional>
+                           <rng:optional>
+                               <rng:ref name="origPlace"/>
+                           </rng:optional>
+                           <rng:optional>
+                               <rng:ref name="secFol"/>
+                           </rng:optional>
+                           <rng:optional>
+                               <rng:ref name="signatures"/>
+                           </rng:optional>
+                           <rng:optional>
+                               <rng:ref name="stamp"/>
+                           </rng:optional>
+                           <rng:optional>
+                               <rng:ref name="watermark"/>
+                           </rng:optional>
+                           <rng:optional>
+                               <rng:ref name="width"/>
+                           </rng:optional>
+                           <rng:optional>
+                               <rng:ref name="list"/>
+                           </rng:optional>
+                       </rng:interleave>
+                   </content>
+               </elementSpec>
+                <elementSpec ident="watermark" module="msdescription" mode="change">
+                    <content>
+                        <rng:interleave>
+                            <rng:optional>
+                                <rng:ref name="WMDesc"/>
+                            </rng:optional>
+                            <rng:optional>
+                            <rng:ref name="paperDesc"/>
+                            </rng:optional>
+                            <rng:optional>
+                                <rng:ref name="list"/>
+                            </rng:optional>
+                        </rng:interleave>
+                    </content>
+                </elementSpec>
+                <elementSpec ident="item" module="core" mode="change">
+                    <content>
+                        <rng:interleave>
+                            <rng:optional>
+                            <rng:ref name="paperDesc"/>
+                            </rng:optional>
+                            <rng:optional>
+                                <rng:ref name="WMDesc"/>
+                            </rng:optional>
+                        </rng:interleave>
+                    </content>
+                </elementSpec>
+               <elementSpec ns="http://www.ermenegildamuller.com/watermarkmodule" ident="paperDesc" mode="add">
+                    <gloss>Paper Description</gloss>
+                    <desc>Contains all necessary information to describe paper(s) in a given document, in conformity with the IPH 2.1.1 standard. Mandatory children elements are papState, dimensions and locusGrp.</desc>
+                    <classes>
+                        <memberOf key="model.physDescPart"/>
+                   </classes>
+                    <content>
+                        <rng:interleave>
+                        <rng:ref name="papState"/>
+                            <rng:ref name="dimensions"/>
+                            <rng:ref name="locusGrp"/>
+                            <rng:ref name="paperDataMethod"/>
+                            <rng:optional>
+                                <rng:ref name="list"/>
+                            </rng:optional>
+                            <rng:optional>
+                                <rng:ref name="WMDesc"/>
+                            </rng:optional>
+                            <rng:optional>
+                                <rng:ref name="enduse"/>
+                            </rng:optional>
+                            <rng:optional>
+                                <rng:ref name="standim"/>
+                            </rng:optional>
+                            <rng:optional>
+                                <rng:ref name="color"/>
+                            </rng:optional>
+                            <rng:optional>
+                                <rng:ref name="pattern"/> 
+                            </rng:optional>
+                            <rng:optional>
+                                <rng:ref name="wireSide"/>
+                            </rng:optional>
+                            <rng:optional>
+                                <rng:ref name="pulp"/> 
+                            </rng:optional>
+                            <rng:optional>
+                                <rng:ref name="fillers"/> 
+                            </rng:optional>
+                            <rng:optional>
+                                <rng:ref name="sizing"/>
+                            </rng:optional>
+                            <rng:optional>
+                                <rng:ref name="coating"/>
+                            </rng:optional>
+                            <rng:optional>
+                                <rng:ref name="dyes"/>
+                            </rng:optional>
+                            <rng:optional>
+                                <rng:ref name="ash"/>
+                            </rng:optional>
+                            <rng:optional>
+                                <rng:ref name="bekk"/>
+                            </rng:optional>
+                            <rng:optional>
+                                <rng:ref name="weig"/>
+                            </rng:optional>
+                            <rng:optional>
+                                <rng:ref name="thick"/>
+                            </rng:optional>
+                            <rng:optional>
+                                <rng:ref name="papGrad"/>
+                            </rng:optional>
+                            <rng:optional>
+                                <rng:ref name="papBrand"/>
+                            </rng:optional>
+                            <rng:optional>
+                                <rng:ref name="papMach"/>
+                            </rng:optional>
+                            <rng:optional>
+                                <rng:ref name="cld"/>
+                            </rng:optional>
+                            <rng:optional>
+                                <rng:ref name="lld"/>
+                            </rng:optional>
+                            <rng:optional>
+                                <rng:ref name="link"/>
+                            </rng:optional>
+                        </rng:interleave>
+                   </content>
+                </elementSpec>
+              <elementSpec ns="http://www.ermenegildamuller.com/watermarkmodule" ident="WMDesc" mode="add">
+                  <gloss>Watermark description</gloss>
+                  <desc>Contains all the necessary elements to describe watermarks. Is meant to be used in paperDesc or in the official TEI watermark element, within a list item or alone. 
+                  Mandatory children elements are locusGrp, moti, WMfull, dimensions, posl and posc.</desc>
+                    <classes>
+                        <memberOf key="model.physDescPart"/>
+                    </classes>
+                    <content>
+                        <rng:interleave>
+                           <rng:ref name="locusGrp"/>
+                            <rng:ref name="moti"/>
+                            <rng:ref name="WMfull"/>
+                            <rng:ref name="WMdim"/>
+                            <rng:ref name="posl"/>
+                            <rng:ref name="compl"/>
+                          <rng:optional>
+                                <rng:ref name="posr"/>
+                            </rng:optional>
+                            <rng:optional>
+                                <rng:ref name="posb"/>
+                            </rng:optional>
+                            <rng:optional>
+                                <rng:ref name="posh"/>
+                            </rng:optional>
+                            <rng:optional>
+                                <rng:ref name="WMinfo"/>
+                            </rng:optional>
+                            <rng:optional>
+                                <rng:ref name="wireSide"/>
+                            </rng:optional>
+                            <rng:optional>
+                                <rng:ref name="compr"/>
+                            </rng:optional>
+                        </rng:interleave>
+                    </content>
+                   <attList>
+                       <attDef ident="twin" usage="opt" mode="add" ns="http://www.ermenegildamuller.com/watermarkmodule">
+                            <gloss>twin number</gloss>
+                            <desc>If the two twins of the same watermark are found in the document, each should be registered as a different list item. 
+                            The twin attribute allows you to distinguish them by specifying which one appears first in the document.</desc>
+                            <valList type="closed">
+                                <valItem ident="1">
+                                    <gloss>first twin</gloss>
+                                </valItem>
+                                <valItem ident="2">
+                                    <gloss>second twin</gloss>
+                                </valItem>
+                            </valList>
+                        </attDef>
+                       <attDef ident="posp" usage="opt" mode="add" ns="http://www.ermenegildamuller.com/watermarkmodule">
+                           <gloss>Watermark position</gloss>
+                           <desc>Approximate position of the watermark on the sheet of paper.</desc>
+                           <valList type="closed">
+                               <valItem ident="C">
+                                   <gloss>center</gloss>
+                               </valItem>
+                               <valItem ident="D">
+                                   <gloss>lower part</gloss>
+                               </valItem>
+                               <valItem ident="L">
+                                   <gloss>left part</gloss>
+                               </valItem>
+                               <valItem ident="M">
+                                   <gloss>middle</gloss>
+                               </valItem>
+                               <valItem ident="R">
+                                   <gloss>right part</gloss>
+                               </valItem>
+                               <valItem ident="U">
+                                   <gloss>upper part</gloss>
+                               </valItem>
+                           </valList>
+                       </attDef>
+                       <attDef ident="wmod" usage="opt" mode="add" ns="http://www.ermenegildamuller.com/watermarkmodule">
+                           <gloss>Watermark application technique</gloss>
+                           <desc>Mechanical watermark application technique.</desc>
+                          <valList type="closed">
+                               <valItem ident="CL">
+                                   <gloss>wire watermark (cylinder machine)</gloss>
+                               </valItem>
+                               <valItem ident="DR">
+                                   <gloss>dandy roll</gloss>
+                               </valItem>
+                               <valItem ident="EMB">
+                                   <gloss>embossed</gloss>
+                               </valItem>
+                               <valItem ident="IMP">
+                                   <gloss>impressed (molette)</gloss>
+                               </valItem>
+                               <valItem ident="OTH">
+                                   <gloss>other</gloss>
+                               </valItem>
+                           </valList>
+                       </attDef>
+                       <attDef ident="kind" usage="req" mode="add" ns="http://www.ermenegildamuller.com/watermarkmodule">
+                           <gloss>Kind of watermark</gloss>
+                           <desc>Kind of watermark, according to position and motive type. Allows you to distinguish a main watermark and its countermark, registered as two different list items.</desc>
+                           <valList type="closed">
+                               <valItem ident="bo">
+                                   <gloss>border watermark - decoration</gloss>
+                               </valItem>
+                               <valItem ident="c">
+                                   <gloss>counter watermark</gloss>
+                               </valItem>
+                               <valItem ident="ncrn">
+                                   <gloss>corner watermark - decoration</gloss>
+                               </valItem>
+                               <valItem ident="dv">
+                                   <gloss>dividing lines</gloss>
+                               </valItem>
+                               <valItem ident="m">
+                                   <gloss>main watermark</gloss>
+                               </valItem>
+                               <valItem ident="n">
+                                   <gloss>without watermark</gloss>
+                               </valItem>
+                           </valList>
+                       </attDef>
+                       <attDef ident="stru" usage="opt" mode="add" ns="http://www.ermenegildamuller.com/watermarkmodule">
+                           <gloss>Watermark structure</gloss>
+                           <desc>Watermark structure, according to production/application technique.</desc>
+                           <valList type="closed">
+                               <valItem ident="EMB">
+                                   <gloss>embossed watermark</gloss>
+                               </valItem>
+                               <valItem ident="LSW">
+                                   <gloss>combined line/shadow</gloss>
+                               </valItem>
+                               <valItem ident="LW">
+                                   <gloss>line watermark</gloss>
+                               </valItem>
+                               <valItem ident="MOL">
+                                   <gloss>molette watermark - impressed</gloss>
+                               </valItem>
+                               <valItem ident="SW">
+                                   <gloss>shadow watermark</gloss>
+                               </valItem>
+                               <valItem ident="TL">
+                                   <gloss>watermark produced by thread lines - what you will meet the most often in 15th- to early 18th-century documents</gloss>
+                               </valItem>
+                               <valItem ident="UNT">
+                                   <gloss>false watermark - produced by printing a colorless liquid</gloss>
+                               </valItem>
+                           </valList>
+                       </attDef>
+                    </attList>
+                </elementSpec>
+                <elementSpec ns="http://www.ermenegildamuller.com/watermarkmodule" ident="ash" mode="add">
+                    <gloss>ash content</gloss>
+                    <desc>Ash content of the paper, given in percentage according to DIN 54370 standard.</desc>
+                    <classes>
+                        <memberOf key="model.physDescPart"/>
+                    </classes>
+                    <content>
+                     <rng:ref name="num"/>
+                    </content>
+                </elementSpec>
+                <elementSpec ns="http://www.ermenegildamuller.com/watermarkmodule" ident="bekk" mode="add">
+                    <gloss>smoothness</gloss>
+                    <desc>Smoothness as measured with a Bekk tester, according to DIN 53107 standard.</desc>
+                    <classes>
+                        <memberOf key="model.physDescPart"/>
+                    </classes>
+                    <content>
+                     <rng:ref name="num"/>
+                    </content>
+                </elementSpec>
+                <elementSpec ns="http://www.ermenegildamuller.com/watermarkmodule" ident="cld" mode="add">
+                    <gloss>chain lines distance</gloss>
+                    <desc>Distance between chain lines, expressed as a sequence, in millimeters.</desc>
+                    <classes>
+                        <memberOf key="model.physDescPart"/>
+                    </classes>
+                    <content>
+                        <rng:ref name="measureGrp"/>
+                    </content>
+                </elementSpec>
+                <elementSpec ns="http://www.ermenegildamuller.com/watermarkmodule" ident="coating" mode="add">
+                    <gloss>Coating</gloss>
+                    <desc>Mode of coating and material used - wheat starch, latex etc.</desc>
+                    <classes>
+                        <memberOf key="model.physDescPart"/>
+                    </classes>
+                    <content>
+                        <rng:text/>
+                    </content>
+                    <attList>
+                        <attDef ident="cmod" mode="add" usage="req" ns="http://www.ermenegildamuller.com/watermarkmodule">
+                          <valList type="closed">
+                              <valItem ident="single">
+                                  <gloss>coated on one side</gloss>
+                              </valItem>
+                              <valItem ident="double">
+                                  <gloss>coated on both sides</gloss>
+                              </valItem>
+                              <valItem ident="absent">
+                                  <gloss>no coating</gloss>
+                              </valItem>
+                          </valList>
+                        </attDef>
+                    </attList>
+                </elementSpec> 
+                <elementSpec ns="http://www.ermenegildamuller.com/watermarkmodule" ident="color" mode="add">
+                    <gloss>Color</gloss>
+                    <desc>Color of the paper: tone and intensity.</desc>
+                    <classes>
+                        <memberOf key="model.physDescPart"/>
+                    </classes>
+                    <content>
+                        <rng:text/>
+                    </content>
+                </elementSpec>
+                <elementSpec ns="http://www.ermenegildamuller.com/watermarkmodule" ident="compl" mode="add">
+                    <gloss>Left chainline compartment</gloss>
+                    <desc>Number of the compartment - i.e. the space between chainlines, from left to right - which is touched by the furthest left point of the watermark.</desc>
+                    <classes>
+                        <memberOf key="model.physDescPart"/>
+                    </classes>
+                    <content>
+                        <rng:ref name="num"/>
+                    </content>
+                </elementSpec>
+                <elementSpec ns="http://www.ermenegildamuller.com/watermarkmodule" ident="compr" mode="add">
+                    <gloss>Right chainline compartment</gloss>
+                    <desc>Number of the compartment - i.e. the space between chainlines, from left to right - which is touched by the furthest right point of the watermark.</desc>
+                    <classes>
+                        <memberOf key="model.physDescPart"/>
+                    </classes>
+                    <content>
+                        <rng:ref name="num"/>
+                    </content>
+                </elementSpec>
+                <elementSpec ns="http://www.ermenegildamuller.com/watermarkmodule" ident="dyes" mode="add">
+                    <gloss>Dyestuffs</gloss>
+                    <desc>Dyestuffs used, if possible according to the Color index.</desc>
+                    <classes>
+                        <memberOf key="model.physDescPart"/>
+                    </classes>
+                    <content>
+                        <rng:text/>
+                    </content>
+                </elementSpec>
+                <elementSpec ns="http://www.ermenegildamuller.com/watermarkmodule" ident="enduse" mode="add">
+                    <gloss>End use</gloss>
+                    <desc>End use of the paper sheet (type of document, use within the document etc.).</desc>
+                    <classes>
+                        <memberOf key="model.physDescPart"/>
+                    </classes>
+                    <content>
+                        <rng:text/>
+                    </content>
+                </elementSpec>
+                <elementSpec ns="http://www.ermenegildamuller.com/watermarkmodule" ident="fillers" mode="add">
+                    <gloss>Fillers</gloss>
+                    <desc>Materials added to the pulp prior to papermaking (i.e. "loading"). See also pulp.</desc>
+                    <classes>
+                        <memberOf key="model.physDescPart"/>
+                    </classes>
+                    <content>
+                        <rng:text/>
+                    </content>
+                </elementSpec>
+                <elementSpec ns="http://www.ermenegildamuller.com/watermarkmodule" ident="lld" mode="add">
+                    <gloss>laid lines density</gloss>
+                    <desc>Average number of laid lines per segment of 20 millimeters.</desc>
+                    <classes>
+                        <memberOf key="model.physDescPart"/>
+                    </classes>
+                    <content>
+                        <rng:ref name="num"/>
+                    </content>
+                </elementSpec>
+                 <elementSpec ns="http://www.ermenegildamuller.com/watermarkmodule" ident="moti" mode="add">
+                    <gloss>Motive</gloss>
+                    <desc>Main motive of the watermark, if possible referenced according to the IPHN 2.1.1 standard.</desc>
+                    <classes>
+                        <memberOf key="model.physDescPart"/>
+                    </classes>
+                    <content>
+                        <rng:interleave>
+                            <rng:optional>
+                                <rng:ref name="desc"/>
+                                </rng:optional>
+                                    <rng:optional>
+                                <rng:ref name="WMref"/>
+                                        </rng:optional>
+                                            <rng:optional>
+                                <rng:ref name="WMname"/>
+                            </rng:optional>
+                        </rng:interleave>
+                    </content>
+                </elementSpec>
+                <elementSpec ns="http://www.ermenegildamuller.com/watermarkmodule" ident="papBrand" mode="add">
+                    <gloss>Paper brand</gloss>
+                    <desc>Name of the paper brand.</desc>
+                    <classes>
+                        <memberOf key="model.physDescPart"/>
+                    </classes>
+                    <content>
+                        <rng:ref name="name"/>
+                    </content>
+                </elementSpec>
+                <elementSpec ns="http://www.ermenegildamuller.com/watermarkmodule" ident="paperDataMethod" mode="add">
+                    <gloss>Paper data collection method</gloss>
+                    <desc>Information regarding how paper and watermark data have been collected, and if paper and watermark data derive
+                        from the original paper sheet or from a reproduction.</desc>
+                    <classes>
+                        <memberOf key="model.physDescPart"/>
+                    </classes>
+                    <content>
+                        <rng:interleave>
+                            <rng:ref key="p"/>
+                            <rng:ref key="reprodID"/>
+                        </rng:interleave>  
+                    </content>
+                    <attList>
+                        <attDef ident="original" usage="req" mode="add" ns="http://www.ermenegildamuller.com/watermarkmodule">
+                            <gloss>Original paper sheet</gloss>
+                            <desc>If the data is derived from the original paper sheet or not.</desc>
+                            <valList type="closed">
+                                <valItem ident="yes">
+                                    <gloss>Yes</gloss>
+                                    <desc>Data derived from the original paper sheet.</desc>
+                                </valItem>
+                                <valItem ident="no">
+                                    <gloss>No</gloss> 
+                                    <desc>Data not derived from the original paper sheet.</desc>
+                                </valItem>
+                            </valList>
+                        </attDef>
+                        <attDef ident="reprod" ns="http://www.ermenegildamuller.com/watermarkmodule">
+                            <gloss>Reproduction technique</gloss>
+                            <desc>Technique used to reproduce the features of the paper sheet and/or the watermark.</desc>
+                            <valList type="closed">
+                                <valItem ident="trac">
+                                    <gloss>Hand-drawn tracing</gloss>
+                                </valItem>
+                                <valItem ident="phot">
+                                    <gloss>Transparency photograph</gloss>
+                                </valItem>
+                                <valItem ident="rubb">
+                                    <gloss>Rubbing</gloss>
+                                </valItem>
+                                <valItem ident="UVphot">
+                                    <gloss>UV photography</gloss>
+                                </valItem>
+                                <valItem ident="phos">
+                                    <gloss>Phosphorescence technique</gloss>
+                                </valItem>
+                                <valItem ident="SXradi">
+                                    <gloss>Soft X-ray radiography</gloss>
+                                </valItem>
+                                <valItem ident="beta">
+                                    <gloss>Beta radiography</gloss>
+                                </valItem>
+                                <valItem ident="elec">
+                                    <gloss>Electron radiography</gloss>
+                                </valItem>
+                                <valItem ident="surf">
+                                    <gloss>Digitalized non-contacting thickness measuring</gloss>
+                                </valItem>
+                                <valItem ident="scan">
+                                    <gloss>Scanning</gloss>
+                                </valItem>
+                                <valItem ident="dive">
+                                    <gloss>Other reproduction technique</gloss>
+                                </valItem>
+                            </valList>
+                        </attDef>
+                    </attList>
+                </elementSpec>
+                <elementSpec ns="http://www.ermenegildamuller.com/watermarkmodule" ident="papGrad" mode="add">
+                    <gloss>Paper grade</gloss>
+                    <desc>Paper grade, according to DIN 6730 standard.</desc>
+                    <classes>
+                        <memberOf key="model.physDescPart"/>
+                    </classes>
+                    <content>
+                        <rng:text/>
+                    </content>
+                </elementSpec>
+                <elementSpec ns="http://www.ermenegildamuller.com/watermarkmodule" ident="papMach" mode="add">
+                    <gloss>Paper machine</gloss>
+                    <desc>Type of machine used to produce the paper.</desc>
+                    <classes>
+                        <memberOf key="model.physDescPart"/>
+                    </classes>
+                    <content>
+                        <rng:text/>
+                    </content>
+                </elementSpec>
+                <elementSpec ns="http://www.ermenegildamuller.com/watermarkmodule" ident="papState" mode="add">
+                    <gloss>Paper state</gloss>
+                    <desc>State of conservation of the paper sheet(s).</desc>
+                    <classes>
+                        <memberOf key="model.physDescPart"/>
+                    </classes>
+                    <content>
+                     <rng:text/>
+                    </content>
+                </elementSpec>
+                <elementSpec ns="http://www.ermenegildamuller.com/watermarkmodule" ident="pattern" mode="add">
+                    <gloss>Pattern</gloss>
+                    <desc>Pattern on a decorated paper.</desc>
+                    <classes>
+                        <memberOf key="model.physDescPart"/>
+                    </classes>
+                    <content>
+                        <rng:text/>
+                    </content>
+                </elementSpec>
+                <elementSpec ns="http://www.ermenegildamuller.com/watermarkmodule" ident="posb" mode="add">
+                    <gloss>Bottom distance</gloss>
+                    <desc>Smallest distance between the watermark and the bottom of the sheet.</desc>
+                    <classes>
+                        <memberOf key="model.physDescPart"/>
+                    </classes>
+                    <content>
+                        <rng:ref name="dimensions"/>
+                    </content>
+                </elementSpec>
+   <elementSpec ns="http://www.ermenegildamuller.com/watermarkmodule" ident="posh" mode="add">
+                    <gloss>Top distance</gloss>
+                    <desc>Smallest distance between the watermark and the top of the sheet.</desc>
+                    <classes>
+                        <memberOf key="model.physDescPart"/>
+                    </classes>
+                    <content>
+                        <rng:ref name="dimensions"/>
+                    </content>
+                </elementSpec>
+                <elementSpec ns="http://www.ermenegildamuller.com/watermarkmodule" ident="posl" mode="add">
+                    <gloss>Distance to left chainline</gloss>
+                    <desc>Smallest distance between the watermark and the nearest chainline on the left.</desc>
+                    <classes>
+                        <memberOf key="model.physDescPart"/>
+                    </classes>
+                    <content>
+                        <rng:ref name="dimensions"/>
+                    </content>
+                </elementSpec>
+                <elementSpec ns="http://www.ermenegildamuller.com/watermarkmodule" ident="posr" mode="add">
+                    <gloss>Distance to right chainline</gloss>
+                    <desc>Smallest distance between the watermark and the nearest chainline on the right.</desc>
+                    <classes>
+                        <memberOf key="model.physDescPart"/>
+                    </classes>
+                    <content>
+                        <rng:ref name="dimensions"/>
+                    </content>
+                </elementSpec>
+                <elementSpec ns="http://www.ermenegildamuller.com/watermarkmodule" ident="pulp" mode="add">
+                    <gloss>Pulp composition</gloss>
+                    <desc>Raw materials used to make the paper pulp (i.e. prior to "loading", see also fillers).</desc>
+                    <classes>
+                        <memberOf key="model.physDescPart"/>
+                    </classes>
+                    <content>
+                        <rng:text/>
+                    </content>
+                </elementSpec> 
+                <elementSpec ns="http://www.ermenegildamuller.com/watermarkmodule" ident="reprodID" mode="add">
+                    <gloss>Access number of the paper sheet or watermark reproduction.</gloss>
+                    <classes>
+                        <memberOf key="model.physDescPart"></memberOf>
+                    </classes>
+                    <content>
+                        <rng:interleave>
+                            <rng:ref key="idno"/>
+                            <rng:ref key="PlaceName"/>
+                        </rng:interleave>
+                    </content>
+                </elementSpec>
+                <elementSpec ns="http://www.ermenegildamuller.com/watermarkmodule" ident="sizing" mode="add">
+                    <gloss>Sizing</gloss>
+                    <desc>Degree of sizing (i.e. addition of material to make the paper less water absorbent) and material used for it.</desc>
+                    <classes>
+                        <memberOf key="model.physDescPart"/>
+                    </classes>
+                    <content>
+                        <rng:text/>
+                    </content>
+                    <attList>
+                        <attDef ident="sdeg" usage="req" mode="add" ns="http://www.ermenegildamuller.com/watermarkmodule">
+                            <valList type="closed">
+                                <valItem ident="FS">
+                                    <gloss>full sized</gloss>
+                                    <desc>strong/hard sized</desc>
+                               </valItem>
+                                <valItem ident="HS">
+                                    <gloss>half sized</gloss>
+                                    <desc>weak/slack sized</desc>
+                                </valItem>
+                                <valItem ident="NS">
+                                    <gloss>unsized</gloss>
+                                </valItem>
+                            </valList>
+                        </attDef>
+                    </attList>
+                </elementSpec> 
+                <elementSpec ns="http://www.ermenegildamuller.com/watermarkmodule" ident="standim" mode="add">
+                    <gloss>Standard dimension</gloss>
+                    <desc>Standard dimension at the time and place of production, with name, place, time, standard height and width in millimeters, and bibliographic reference 
+                        (e. g. Foolscap Folio, London, c. 1850, 203x330, c.f. Labarre 1952: 259)</desc>
+                    <classes>
+                        <memberOf key="model.physDescPart"/>
+                    </classes>
+                    <content>
+                        <rng:text/>
+                    </content>
+                </elementSpec>
+                <elementSpec ns="http://www.ermenegildamuller.com/watermarkmodule" ident="thick" mode="add">
+                    <gloss>Thickness</gloss>
+                    <desc>Thickness of the sheet, in micrometers, according to DIN 53105 standard.</desc>
+                    <classes>
+                        <memberOf key="model.physDescPart"/>
+                    </classes>
+                    <content>
+                        <rng:ref name="dimensions"/>
+                    </content>
+                </elementSpec>
+                <elementSpec ns="http://www.ermenegildamuller.com/watermarkmodule" ident="weig" mode="add">
+                    <gloss>Weight</gloss>
+                    <desc>Basis weight of the paper in g/m2.</desc>
+                    <classes>
+                        <memberOf key="model.physDescPart"/>
+                    </classes>
+                    <content>
+                        <rng:ref name="dimensions"/>
+                    </content>
+                </elementSpec> 
+                <elementSpec ns="http://www.ermenegildamuller.com/watermarkmodule" ident="wireSide" mode="add">
+                    <gloss>Wire side</gloss>
+                    <desc>Whether the wire side was facing up or down when the observations were performed.</desc>
+                    <content>
+                        <rng:text/>
+                    </content>
+                    <attList>
+                        <attDef ident="side" usage="opt" mode="add" ns="http://www.ermenegildamuller.com/watermarkmodule">
+                            <valList type="closed">
+                                <valItem ident="down">
+                                    <gloss>wire side facing down</gloss>
+                                </valItem>
+                                <valItem ident="up">
+                                    <gloss>wire side facing up</gloss>
+                                </valItem>
+                                <valItem ident="unknown">
+                                    <gloss>wire side not known</gloss>
+                                </valItem>
+                            </valList>
+                        </attDef>
+                    </attList>
+                </elementSpec>
+                <elementSpec ns="http://www.ermenegildamuller.com/watermarkmodule" ident="WMdim" mode="add">
+               <gloss>watermark dimensions</gloss>
+                <desc>Height and width of the watermark in millimeters.</desc>  
+                    <classes>
+                        <memberOf key="model.physDescPart"/>
+                    </classes>
+                    <content>
+                        <rng:ref name="dimensions"/>
+                    </content>
+                </elementSpec>
+                <elementSpec ns="http://www.ermenegildamuller.com/watermarkmodule" ident="WMfull" mode="add">
+                    <gloss>full watermark description</gloss>
+                    <classes>
+                        <memberOf key="model.physDescPart"/>
+                    </classes>
+                    <content>
+                        <rng:text/>
+                    </content>
+                </elementSpec>
+                <elementSpec ns="http://www.ermenegildamuller.com/watermarkmodule" ident="WMinfo" mode="add">
+                    <gloss>Additional watermark information</gloss>
+                    <classes>
+                        <memberOf key="model.physDescPart"/>
+                    </classes>
+                    <content>
+                        <rng:text/>
+                    </content>
+                </elementSpec>
+                <elementSpec ns="http://www.ermenegildamuller.com/watermarkmodule" ident="WMname" mode="add">
+                    <gloss>Watermark name</gloss>
+                    <desc>Name of the watermark motive according to IPHN 2.1.1 standard.</desc>
+                    <classes>
+                        <memberOf key="model.physDescPart"/>
+                    </classes>
+                    <content>
+                        <rng:text/>
+                    </content>
+                    <attList>
+                        <attRef class="att.global" name="xml.lang"/>
+                    </attList>
+                </elementSpec>
+                <elementSpec ns="http://www.ermenegildamuller.com/watermarkmodule" ident="WMref" mode="add">
+                    <gloss>Watermark reference</gloss>
+                    <desc>Watermark motive reference code in the IPHN 2.1.1 standard.</desc>
+                    <classes>
+                        <memberOf key="model.physDescPart"/>
+                    </classes>
+                    <content>
+                        <rng:text/>
+                    </content>
+                </elementSpec>
+              </schemaSpec>
+        </body>
+    </text>
+</TEI>
+
